@@ -1,5 +1,8 @@
 # Para clonar este proyecto se necesita lo siguiente: 
-### Pyhthon >= 10.0.x 
+## Pyhthon >= 10.0.x 
+```
+git clone https://github.com/JoseDev268/ocr-v1.git
+```
 
 ### Crear un entorno virtual con venv en el directorio base del proyecto 
 ```
