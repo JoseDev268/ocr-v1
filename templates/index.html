@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Huespedes con OCR</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}">
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="bg-white shadow-md rounded-lg p-8 max-w-lg w-full">
+        <h1 class="text-2xl font-bold text-center text-gray-800 mb-6">Subir la Imagen</h1>
+        <form action="/" method="POST" enctype="multipart/form-data" class="space-y-4">
+            <div>
+                <label class="block text-gray-700 font-medium mb-2" for="file">Selecciona una imagen:</label>
+                <input type="file" name="file" id="file" accept="image/*" required
+                    class="block w-full text-gray-700 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
+            </div>
+            <button type="submit"
+                class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">Subir y Procesar</button>
+        </form>
+
+        {% if extracted_data %}
+        <div class="mt-8">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">Datos extraídos:</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full border-collapse border border-gray-300">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="border border-gray-300 px-4 py-2 text-left text-gray-600">Campo</th>
+                            <th class="border border-gray-300 px-4 py-2 text-left text-gray-600">Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                        {% for key, value in extracted_data.items() %}
+                        <tr class="hover:bg-gray-100">
+                            <td class="border border-gray-300 px-4 py-2 text-gray-700">{{ key }}</td>
+                            <td class="border border-gray-300 px-4 py-2 text-gray-700">{{ value }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% else %}
+        <p class="text-center text-gray-500 mt-6">No se encontraron datos.</p>
+        {% endif %}
+    </div>
+</body>
+
+</html>
+
+
+</html>
